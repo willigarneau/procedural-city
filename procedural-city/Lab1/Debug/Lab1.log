@@ -1,14 +1,1 @@
-﻿  main.cpp
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(149): warning C4244: 'argument' : conversion de 'int' en 'GLfloat', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(157): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(186): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(202): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(206): warning C4244: 'argument' : conversion de 'float' en 'const GLuint', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(381): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(382): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(388): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(389): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(395): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(396): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-k:\exemple_09_aveclookat\maison+skybox_testslookat\lab1\main.cpp(398): warning C4305: 'initialisation' : troncation de 'double' à 'GLfloat'
-  Lab1.vcxproj -> K:\Exemple_09_avecLookAt\maison+skybox_TestsLookAT\Debug\Lab2.exe
+﻿  Lab1.vcxproj -> K:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\Lab2.exe

@@ -1,5 +1,17 @@
-/*	Code du laboratoire de la semaine 8 pour le cours Infographie automne 2016
-	Code généré par Mélissa Clermont
+/*	
+
+	Procedural city generator
+	Infography 2018
+	Cégep Lévis-Lauzon
+
+	OpenGL 3.42,
+	FreeGlut,
+	Glew,
+	GLM,
+	SOIL,
+
+	Copyright (c) 2018, William Garneau and the respective contributors
+	All rights reserved.
 */
 
 #include <iostream>
@@ -81,9 +93,9 @@ void getUniforms(GLuint *program)
 GLuint getRandomTexture(int random) {
 	switch (random) {
 		case 0:
-			return texBuilding1;
-		case 1:
 			return texMaison;
+		case 1:
+			return texBuilding1;
 		case 2:
 			return texBuilding2;
 		case 3:
