@@ -1,14 +1,13 @@
 /*	
-
 	Procedural city generator
 	Infography 2018
 	Cégep Lévis-Lauzon
 
 	OpenGL 3.42,
-	FreeGlut,
-	Glew,
-	GLM,
-	SOIL,
+	FreeGlut 3.7,
+	Glew 2.1,
+	GLM 0.9.3,
+	SOIL 1.16,
 
 	Copyright (c) 2018, William Garneau and the respective contributors
 	All rights reserved.
@@ -70,7 +69,7 @@ GLfloat yaw = -90.0f;
 GLfloat pitch = 0.0f;
 GLfloat lastX = 0;
 GLfloat lastY = 0;
-bool boutons[4] = { false,false,false,false };
+bool boutons[5] = { false,false,false,false,false };
 bool warpsouris=false;
 int nbBuildings = 40;
 bool hasStarted = false;
@@ -148,9 +147,14 @@ void deplacement()
 	if (boutons[3] == true) {
 		cameraPos += glm::normalize(glm::cross(camDevant, cameraUp)) * cameraSpeed;
 	}
-
+	if (boutons[4] == true) {
+		_x.clear();
+		_y.clear();
+		_z.clear();
+		_texture.clear();
+		hasStarted = false;
+	}
 	Limites();
-	
 }
 
 void drawBuilding()
@@ -158,7 +162,7 @@ void drawBuilding()
 	House_Maker maMaison;
 
 	glBindVertexArray(vaoBase);
-	maMaison.creeBase(rand() % 10, rand() % 70, 4.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+	maMaison.creeBase(rand() % 10, rand() % 70, 5.0f, glm::vec3(rand() % 2, rand() % 2, rand() % 2));
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoToit);
@@ -236,7 +240,6 @@ void renduMaison()
 			glDrawElements(GL_TRIANGLES, 6 * 3, GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 
-
 			modele = glm::mat4(1.0f);
 			randY *= -1;
 			modele = glm::translate(modele, glm::vec3(10.0*x, 0.0, -10.0*randY*y));
@@ -257,7 +260,6 @@ void drawSkybox()
 	glBindVertexArray(vaoSkybox);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
-	
 }
 
 //Fonction de rappel du rendu graphique
@@ -320,20 +322,13 @@ void renduScene()
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		glBindVertexArray(0);
 	}
-	
-
 	glBindVertexArray(vaoGrass);
 	glBindTexture(GL_TEXTURE_2D, texGrass);
 	glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
-		
 	
-
 	glutSwapBuffers();
-
-
-	
 }
 
 void clavier(unsigned char bouton, int x, int y)
@@ -342,26 +337,24 @@ void clavier(unsigned char bouton, int x, int y)
 	{
 	case 'a':
 		boutons[0] = true;
-		
 		break;
 	case 'w':
 		boutons[1] = true;
-		
 		break;
 	case 's':
 		boutons[2] = true;
-		
 		break;
 	case 'd':
 		boutons[3] = true;
-		
+		break;
+	case 'r':
+		boutons[4] = true;
 		break;
 	case 27:
 		glutLeaveMainLoop();
 		break;
 
 	}
-	
 }
 
 void releaseClavier(unsigned char bouton, int x, int y)
@@ -381,7 +374,10 @@ void releaseClavier(unsigned char bouton, int x, int y)
 	case 'd':
 		boutons[3] = false;
 		break;
-		}
+	case 'r':
+		boutons[4] = false;
+		break;
+	}
 }
 
 void souris(int x, int y)
@@ -520,6 +516,7 @@ int main(int argc, char **argv)
 	/*******************/
 	glewInit();
 	initShaders();
+	glutStrokeCharacter(GLUT_STROKE_ROMAN, 2);
 	/******************/
 	glutDisplayFunc(renduScene);
 	glutCloseFunc(fermeture);
