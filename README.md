@@ -7,6 +7,8 @@
 
 ## Showcase
 
+Here's an **example** of the camera and the final look of the project. 
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/33030290/48488025-d6189200-e7ed-11e8-9821-491b4853257c.gif")><br>
 </p>
