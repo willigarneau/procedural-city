@@ -27,6 +27,12 @@ Here's an **example** of the camera and the final look of the project.
 
 </center>
 
+Here's an example of how the program reacts to a **re-generation** of the buildings : 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/33030290/48489759-c13dfd80-e7f1-11e8-9770-0d6b82e70d58.gif")><br>
+</p>
+
 ## Summary
 First, what is **procedural generation**?
 
