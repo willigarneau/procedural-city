@@ -544,12 +544,11 @@ int main(int argc, char **argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH );
 	glutInitWindowSize(glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
-	glutCreateWindow("Travail Pratique 3, par William Garneau");
+	glutCreateWindow("Travail Pratique 3 par William Garneau");
 	glutFullScreen();
 	/*******************/
 	glewInit();
 	initShaders();
-	glutStrokeCharacter(GLUT_STROKE_ROMAN, 2);
 	/******************/
 	glutDisplayFunc(renduScene);
 	glutCloseFunc(fermeture);
