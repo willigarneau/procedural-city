@@ -8,8 +8,7 @@
 ## Showcase
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/33030290/48487874-74f0be80-e7ed-11e8-8b4a-e441281ddb8a.gif)
-"><br>
+  <img src="https://user-images.githubusercontent.com/33030290/48487874-74f0be80-e7ed-11e8-8b4a-e441281ddb8a.gif")><br>
 </p>
 
 ### Summary
