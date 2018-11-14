@@ -11,7 +11,7 @@
   <img src="https://user-images.githubusercontent.com/33030290/48488025-d6189200-e7ed-11e8-9821-491b4853257c.gif")><br>
 </p>
 
-### Summary
+## Summary
 First, what is **procedural generation**?
 
 **From Wikipedia :** In computing, **procedural generation** is a method of creating data *algorithmically* as opposed to manually. In computer graphics, it is also called **random generation** and is commonly used to create textures and 3D models. In video games, it is used to *automatically create large amounts of content in a game*. Advantages of procedural generation include smaller file sizes, larger amounts of content, and randomness for less predictable gameplay.
