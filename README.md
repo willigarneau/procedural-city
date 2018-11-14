@@ -15,6 +15,8 @@ Here's an **example** of the camera and the final look of the project.
 
 ## Controls
 
+<center>
+ 
 | Input   |  Description |
 |:----------:|:------:|
 | 'w' | Move forward in the environment |
@@ -22,6 +24,8 @@ Here's an **example** of the camera and the final look of the project.
 | 's' | Move left in the environment |
 | 'd' | Move right in the environment |
 | 'r' | Re-generate the building sizes and textures |
+
+</center>
 
 ## Summary
 First, what is **procedural generation**?
