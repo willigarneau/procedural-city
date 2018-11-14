@@ -50,6 +50,12 @@ GLuint texBuilding2;
 GLuint texBuilding3;
 GLuint texBuilding4;
 GLuint texBuilding5;
+GLuint texBuilding6;
+GLuint texBuilding7;
+GLuint texBuilding8;
+GLuint texBuilding9;
+GLuint texBuilding10;
+GLuint texBuilding11;
 GLuint texSol;
 GLuint texToit;
 GLuint texNuage;
@@ -103,6 +109,18 @@ GLuint getRandomTexture(int random) {
 			return texBuilding4;
 		case 5:
 			return texBuilding5;
+		case 6:
+			return texBuilding6;
+		case 7:
+			return texBuilding7;
+		case 8:
+			return texBuilding8;
+		case 9:
+			return texBuilding9;
+		case 10:
+			return texBuilding10;
+		case 12:
+			return texBuilding11;
 		default:
 			return 0;
 	}
@@ -162,7 +180,7 @@ void drawBuilding()
 	House_Maker maMaison;
 
 	glBindVertexArray(vaoBase);
-	maMaison.creeBase(rand() % 10, rand() % 70, 5.0f, glm::vec3(rand() % 2, rand() % 2, rand() % 2));
+	maMaison.creeBase(10, 50, 5.0f, glm::vec3(rand() % 2, rand() % 2, rand() % 2));
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoToit);
@@ -214,8 +232,8 @@ void renduMaison()
 		for (int i = 0; i < nbBuildings * nbBuildings; i++) {
 			float randomX = ((2.0f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
 			float randomY = ((4.5f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
-			float randomZ = ((2.25f - 0.75f) * ((float)rand() / RAND_MAX)) + 0.75f;
-			float randomTex = rand() % 5;
+			float randomZ = ((2.0f - 0.75f) * ((float)rand() / RAND_MAX)) + 0.75f;
+			float randomTex = rand() % 11;
 			_x.push_back(randomX);
 			_y.push_back(randomY);
 			_z.push_back(randomZ);
@@ -439,6 +457,12 @@ void initTextures()
 	texBuilding3 = textureLoader.CreateTexture2D("textures/building3.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
 	texBuilding4 = textureLoader.CreateTexture2D("textures/building4.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
 	texBuilding5 = textureLoader.CreateTexture2D("textures/building5.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
+	texBuilding6 = textureLoader.CreateTexture2D("textures/building6.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
+	texBuilding7 = textureLoader.CreateTexture2D("textures/building7.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
+	texBuilding8 = textureLoader.CreateTexture2D("textures/building8.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
+	texBuilding9 = textureLoader.CreateTexture2D("textures/building9.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
+	texBuilding10 = textureLoader.CreateTexture2D("textures/building10.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
+	texBuilding11 = textureLoader.CreateTexture2D("textures/building11.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
 	
 	texNuage = textureLoader.CreateTexture2D("textures/cloud.png", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
 	texHorizon = textureLoader.CreateTexture2D("textures/city.png", GL_MIRRORED_REPEAT, GL_CLAMP_TO_EDGE, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
