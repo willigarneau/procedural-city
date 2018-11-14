@@ -1,17 +1,23 @@
 ﻿  main.cpp
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(191): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(220): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(236): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(240): warning C4244: 'argument' : conversion de 'float' en 'const _Ty', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(196): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(225): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(239): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(243): warning C4244: 'argument' : conversion de 'float' en 'const _Ty', perte possible de données
           with
           [
               _Ty=GLuint
           ]
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(407): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(408): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(414): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(415): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(421): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(422): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(424): warning C4305: 'initialisation' : troncation de 'double' à 'GLfloat'
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(247): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(251): warning C4244: 'argument' : conversion de 'float' en 'const _Ty', perte possible de données
+          with
+          [
+              _Ty=GLuint
+          ]
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(439): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(440): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(444): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(445): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(451): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(452): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(454): warning C4305: 'initialisation' : troncation de 'double' à 'GLfloat'
   Lab1.vcxproj -> E:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\Lab2.exe

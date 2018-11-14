@@ -66,7 +66,7 @@ GLuint texSkybox;
 /******variables globales*******/
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.5f, 7.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.25f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 5.0f, 0.0f);
 
 float multipleCouleur[4] = { 1.0,1.0,1.0,1.0 };
 bool firstMouse = true;
@@ -79,11 +79,16 @@ bool boutons[5] = { false,false,false,false,false };
 bool warpsouris=false;
 int nbBuildings = 40;
 bool hasStarted = false;
-// Scaling
+// Scaling front
 std::vector<float> _x;
 std::vector<float> _y;
 std::vector<float> _z;
 std::vector<GLuint> _texture;
+// Scaling back
+std::vector<float> _x2;
+std::vector<float> _y2;
+std::vector<float> _z2;
+std::vector<GLuint> _texture2;
 
 void getUniforms(GLuint *program)
 {
@@ -166,10 +171,10 @@ void deplacement()
 		cameraPos += glm::normalize(glm::cross(camDevant, cameraUp)) * cameraSpeed;
 	}
 	if (boutons[4] == true) {
-		_x.clear();
-		_y.clear();
-		_z.clear();
-		_texture.clear();
+		_x.clear(); _x2.clear();
+		_y.clear(); _y2.clear();
+		_z.clear(); _z2.clear();
+		_texture.clear(); _texture2.clear();
 		hasStarted = false;
 	}
 	Limites();
@@ -225,26 +230,40 @@ void drawBuilding()
 	glBindVertexArray(0);
 }
 
-void renduMaison()
-{
-	float randY = 1.0;
+void InitRandomValues() {
 	if (!hasStarted) {
 		for (int i = 0; i < nbBuildings * nbBuildings; i++) {
 			float randomX = ((2.0f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
-			float randomY = ((4.5f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
+			float randomY = ((5.0f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
 			float randomZ = ((2.0f - 0.75f) * ((float)rand() / RAND_MAX)) + 0.75f;
 			float randomTex = rand() % 11;
 			_x.push_back(randomX);
 			_y.push_back(randomY);
 			_z.push_back(randomZ);
 			_texture.push_back(randomTex);
+			randomX = ((2.0f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
+			randomY = ((4.5f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
+			randomZ = ((2.0f - 0.75f) * ((float)rand() / RAND_MAX)) + 0.75f;
+			randomTex = rand() % 11;
+			_x2.push_back(randomX);
+			_y2.push_back(randomY);
+			_z2.push_back(randomZ);
+			_texture2.push_back(randomTex);
 		}
 		hasStarted = true;
 	}
+}
+
+
+void renduMaison()
+{
+	float randY = 1.0;
+	InitRandomValues();
 	glm::mat4 modele=glm::mat4(1.0);
-	for (int y = 1; y < nbBuildings / 2; y++) {
-		for (int x = 1; x < nbBuildings / 2; x++)
-		{
+
+	// Behind the original building
+	for (int y = 1; y < nbBuildings / (nbBuildings / 10); y++) {
+		for (int x = 1; x < nbBuildings / (nbBuildings / 10); x++) {
 			glUniformMatrix4fv(glGetUniformLocation(textureProgram, "gModele"), 1, GL_FALSE, &modele[0][0]);
 			glBindVertexArray(vaoBase);
 			glBindTexture(GL_TEXTURE_2D, getRandomTexture(_texture[x * y]));
@@ -262,11 +281,32 @@ void renduMaison()
 			randY *= -1;
 			modele = glm::translate(modele, glm::vec3(10.0*x, 0.0, -10.0*randY*y));
 			modele = glm::scale(modele, glm::vec3(_x[x * y], _y[x * y], _z[x * y]));
-			//modele = glm::rotate(modele, glm::radians(1.0f*x), glm::vec3(0.0, 1.0, 0.0));
 		}
 		randY *= -1;
 	}
+	// In front of the original building
+	for (int y = 1; y < nbBuildings / (nbBuildings / 10); y++) {
+		for (int x = 1; x < nbBuildings / (nbBuildings / 10); x++) {
+			glUniformMatrix4fv(glGetUniformLocation(textureProgram, "gModele"), 1, GL_FALSE, &modele[0][0]);
+			glBindVertexArray(vaoBase);
+			glBindTexture(GL_TEXTURE_2D, getRandomTexture(_texture2[x * y]));
+			glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
+			glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
 
+			glBindVertexArray(vaoToit);
+			glBindTexture(GL_TEXTURE_2D, texToit);
+			glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
+			glDrawElements(GL_TRIANGLES, 6 * 3, GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+
+			modele = glm::mat4(1.0f);
+			randY *= -1;
+			modele = glm::translate(modele, glm::vec3(-10.0*x, 0.0, -10.0*randY*y));
+			modele = glm::scale(modele, glm::vec3(_x2[x * y], _y2[x * y], _z2[x * y]));
+		}
+		randY *= -1;
+	}
 }
 
 void drawSkybox()
@@ -286,7 +326,6 @@ void renduScene()
 	glm::mat4 view;
 	glm::mat4 projection;
 	glm::mat4 modele;
-
 	deplacement();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -322,18 +361,14 @@ void renduScene()
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
 
-	for (int i = 0; i < 2; i++)
-	{
+	for (int i = 0; i < 2; i++) {
 		glBindVertexArray(vaoNuage[i]);
 		glBindTexture(GL_TEXTURE_2D, texNuage);
 		glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		glBindVertexArray(0);
-
-		
 	}
-	for (int i = 0; i < 4; i++)
-	{
+	for (int i = 0; i < 4; i++) {
 		glBindVertexArray(vaoHorizon[i]);
 		glBindTexture(GL_TEXTURE_2D, texHorizon);
 		glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
@@ -371,13 +406,11 @@ void clavier(unsigned char bouton, int x, int y)
 	case 27:
 		glutLeaveMainLoop();
 		break;
-
 	}
 }
 
 void releaseClavier(unsigned char bouton, int x, int y)
 {
-
 	switch (bouton)
 	{
 	case 'a':
@@ -401,16 +434,13 @@ void releaseClavier(unsigned char bouton, int x, int y)
 void souris(int x, int y)
 {
 
-	if (warpsouris)
-	{
+	if (warpsouris) {
 		warpsouris = false;
 		lastX = x;
 		lastY = y;
 	}
-	else
-	{
-		if (firstMouse)
-		{
+	else {
+		if (firstMouse) {
 			lastX = x;
 			lastY = y;
 			firstMouse = false;
@@ -428,10 +458,8 @@ void souris(int x, int y)
 		yaw += xoffset;
 		pitch += yoffset;
 
-		if (pitch > 89.0f)
-			pitch = 89.0f;
-		if (pitch < -89.0f)
-			pitch = -89.0f;
+		if (pitch > 89.0f) pitch = 89.0f;
+		if (pitch < -89.0f) pitch = -89.0f;
 
 		glm::vec3 front;
 		front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
@@ -477,7 +505,6 @@ void initTextures()
 	faces.push_back("textures/front.jpg");
 	texSkybox = textureLoader.CreateSkyboxTexture(faces);
 }
-
 /*****************************************/
 //Fonction d'initialisation des shaders
 void initShaders()
@@ -485,20 +512,7 @@ void initShaders()
 	Core::Shader_Loader shaderLoader;
 	textureProgram = shaderLoader.CreateProgram("vertexShader.glsl", "fragmentShader.glsl");
 	skyboxProgram = shaderLoader.CreateProgram("vertSkybox.glsl", "fragSkybox.glsl");
-
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-	//glUseProgram(textureProgram);
-
-	/*gProjection = glGetUniformLocation(textureProgram, "gProjection");
-	assert(gProjection != 0xFFFFFFFF);
-
-	gVue = glGetUniformLocation(textureProgram, "gVue");
-	assert(gVue != 0xFFFFFFFF);
-
-	gModele = glGetUniformLocation(textureProgram, "gModele");
-	assert(gModele != 0xFFFFFFFF);*/
-
 	glGenVertexArrays(1, &vaoBase);
 	glGenVertexArrays(1, &vaoToit);
 	glGenVertexArrays(1, &vaoSol);
@@ -506,13 +520,11 @@ void initShaders()
 	glGenVertexArrays(4, vaoHorizon);
 	glGenVertexArrays(1, &vaoGrass);
 	glGenVertexArrays(1, &vaoSkybox);
-
 }
 void passeTemps(int temps)
 {
 	multipleCouleur[temps] -= 0.5;
 	temps++;
-
 	if(temps == 4)
 	{
 		multipleCouleur[0] = 1.0;
@@ -521,15 +533,12 @@ void passeTemps(int temps)
 		multipleCouleur[3] = 1.0;
 		temps = 0;
 	}
-	
 	glutTimerFunc(5000, passeTemps, temps);
 }
-/******************************************/
 void fermeture()
 {
 	glutLeaveMainLoop();
 }
-//Fonction principale d'initialisation et d'exécution
 int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
@@ -548,18 +557,13 @@ int main(int argc, char **argv)
 	glutPassiveMotionFunc(souris);
 	glutKeyboardUpFunc(releaseClavier);
 	glutIdleFunc(renduScene);
-	//glutTimerFunc(5000,passeTemps,0);
-	
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
-
 	glClearColor(0.0f, 0.4f, 0.5f, 0.0f);
-
 	glutSetCursor(GLUT_CURSOR_NONE);
-
 	/***Initialisation de la maison****/
 	initTextures();
 	drawBuilding();
@@ -575,7 +579,6 @@ int main(int argc, char **argv)
 	glDeleteProgram(skyboxProgram);
 	glDeleteProgram(textureProgram);
 	/**************/
-
 	return 0;
 }
 
