@@ -16,7 +16,7 @@ Here's an **example** of the camera and the final look of the project.
 ## Summary
 First, what is **procedural generation**?
 
-**From Wikipedia :** In computing, **procedural generation** is a method of creating data *algorithmically* as opposed to manually. In computer graphics, it is also called **random generation** and is commonly used to create textures and 3D models. In video games, it is used to *automatically create large amounts of content in a game*. Advantages of procedural generation include smaller file sizes, larger amounts of content, and randomness for less predictable gameplay.
+**From [Wikipedia](https://en.wikipedia.org/wiki/Procedural_generation) :** In computing, **procedural generation** is a method of creating data *algorithmically* as opposed to manually. In computer graphics, it is also called **random generation** and is commonly used to create textures and 3D models. In video games, it is used to *automatically create large amounts of content in a game*. Advantages of procedural generation include smaller file sizes, larger amounts of content, and randomness for less predictable gameplay.
 
 *For the purpose of my project*, the goal was rather to find a way to generate buildings randomly in a small space.
 
