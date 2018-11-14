@@ -24,7 +24,7 @@ Initially, it was a task I had received in my computer graphics course. Usually,
 
 Users used a lot more **GLFW than FreeGlut**. The few people who used the same tools as me had programs far too complicated for anything.
 
-So I decided to start from 0 and create a quick and easy way to randomly generate a city with buildings of different size and with different textures, all using shaders.
+So I decided to start from 0 and create a quick and easy way to *randomly generate a city with buildings of different size and with different textures*, all using shaders.
 
 I did not complicate my life, I created a single *VAO* to which I was going to apply transformations to avoid going into an overly complex generation structure.
 
@@ -68,13 +68,25 @@ helpful for you to spot the difference to yours.
 Windows 10 2018
 ```
 
-<b>OpenCV</b>
+<b>OpenGL</b>
 
-You can find the last version of OpenCV by following this [link](https://www.opencv.org/)
+You can find the last version of OpenCV by following this [link](https://www.opengl.org/)
 
-<b>Cuda</b>
+<b>FreeGlut</b>
 
-Installing Cuda in Visual Studio is a real pain. I recommend you to use an existing project if you don't wanna waste time.
+All informations about this library can be found on http://freeglut.sourceforge.net/.
+
+<b>Glew</b>
+
+All informations about this library can be found on http://glew.sourceforge.net/
+
+<b>GLM</b>
+
+All informations about this library can be found on https://glm.g-truc.net/0.9.9/index.html
+
+<b>SOIL</b>
+
+All informations about this library can be found on https://www.khronos.org/opengl/wiki/Image_Libraries
 
 ---
 
