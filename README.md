@@ -45,7 +45,7 @@ if (!hasStarted) {
 	}
 ```
 
-**And here's the final look ->**
+**And here's the rendering of the random method ->**
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/33030290/48489759-c13dfd80-e7f1-11e8-9770-0d6b82e70d58.gif")><br>
