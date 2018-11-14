@@ -108,7 +108,7 @@ Windows 10 2018
 
 <b>OpenGL</b>
 
-You can find the last version of OpenCV by following this [link](https://www.opengl.org/)
+You can find the last version of OpenGL by following this [link](https://www.opengl.org/)
 
 <b>FreeGlut</b>
 
