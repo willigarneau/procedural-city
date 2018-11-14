@@ -1,37 +1,57 @@
- <h1 align="center">Procedural City Generator</h1> 
+ <h1 align="center">Procedural City Generation</h1> 
   <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg"><br>
   <img src="https://api.codacy.com/project/badge/Grade/e28ff30817f945c4b782a383e2711f8d"/></a><br>
-  Made with OpenGL, GLM, FreeGlut and Glew. 
+  Made with OpenGL, FreeGlut, Glew, SOIL, GLM and shaders.
   </p>
 
-So here is the result of what I learned. I hope you will have fun with it!
+## Showcase
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/33030290/48487874-74f0be80-e7ed-11e8-8b4a-e441281ddb8a.gif)
+"><br>
+</p>
+
+### Summary
+First, what is **procedural generation**?
+
+**From Wikipedia :** In computing, **procedural generation** is a method of creating data *algorithmically* as opposed to manually. In computer graphics, it is also called **random generation** and is commonly used to create textures and 3D models. In video games, it is used to *automatically create large amounts of content in a game*. Advantages of procedural generation include smaller file sizes, larger amounts of content, and randomness for less predictable gameplay.
+
+*For the purpose of my project*, the goal was rather to find a way to generate buildings randomly in a small space.
+
+Initially, it was a task I had received in my computer graphics course. Usually, in these cases, I immerse myself in the Github projects to get inspired by the kind of program structure I will need. However, I did not find anything concrete with the librairies I used.
+
+Users used a lot more GLFW than FreeGlut. The few people who used the same tools as me had programs far too complicated for anything.
+
+So I decided to start from 0 and create a quick and easy way to randomly generate a city with buildings of different size and with different textures, all using shaders.
+
+I did not complicate my life, I created a single VAO to which I was going to apply transformations to avoid going into an overly complex generation structure.
+
+#### Since there might still be some problems in my implementation, so please feel free to give me any advice!
+
+So here is the result of what I made. I hope you will have fun with it!
+
+**Note :** There is some code in the project to create a merge frame from 2 images. We are using a camera at school which can't take the whole path. For more informations about the camera, visit https://www.axis.com/fr-ca.
+
 ---
 
 ## Prerequisites
 
 Ensure you have following installed:
 
-  - [Visual Studio](https://code.visualstudio.com/)
+  - [Visual Studio Community 2017](https://visualstudio.microsoft.com/downloads/)
 
 ## Compile and run
 
 As simple as:
 
 ```c++
-cd portfolio
-yarn
-yarn start
+1. Open the project in VS.
+2. Execute the project.
+3. Have fun !
 ```
 
-or by debugging the whole program in **Visual Studio Code**
-
-You can stop the local server by pressing **CTRL+C** in your terminal
-
-## Disclaimer
-
-The build is configured to perfectly work on Mac OSX Mojave (Visual Studio Code). 
-Your mileage may vary if you are compiling the code on a different OS. 
+or by debugging the whole program in **Visual Studio Entreprise**
 
 ---
 
@@ -44,15 +64,19 @@ helpful for you to spot the difference to yours.
 <b>OS</b>
 
 ```c++
-Mac OSX Mojave
+Windows 10 2018
 ```
 
-<b>Three.js</b>
+<b>OpenCV</b>
 
-You can find the last version of Three.js framework by following this [link](https://github.com/mrdoob/three.js/)
+You can find the last version of OpenCV by following this [link](https://www.opencv.org/)
+
+<b>Cuda</b>
+
+Installing Cuda in Visual Studio is a real pain. I recommend you to use an existing project if you don't wanna waste time.
 
 ---
 
 # Licence
 
-MIT License
+None for this project, it's for the purpose of a class
