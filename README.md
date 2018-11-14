@@ -27,7 +27,25 @@ Here's an **example** of the camera and the final look of the project.
 
 </center>
 
-Here's an example of how the program reacts to a **re-generation** of the buildings : 
+Here's an example of how the program reacts to a **re-generation** of the buildings. I store the x, y, z and texture identifier in vectors, so the randomization is just made by clearing them and regenerate random numbers in it. It is draw at each movement by the camera, which makes the random very fluid. :
+
+```c++
+if (!hasStarted) {
+		for (int i = 0; i < nbBuildings * nbBuildings; i++) {
+			float randomX = ((2.0f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
+			float randomY = ((4.5f - 0.25f) * ((float)rand() / RAND_MAX)) + 0.25f;
+			float randomZ = ((2.25f - 0.75f) * ((float)rand() / RAND_MAX)) + 0.75f;
+			float randomTex = rand() % 5;
+			_x.push_back(randomX);
+			_y.push_back(randomY);
+			_z.push_back(randomZ);
+			_texture.push_back(randomTex);
+		}
+		hasStarted = true;
+	}
+```
+
+**And here's the final look ->**
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/33030290/48489759-c13dfd80-e7f1-11e8-9770-0d6b82e70d58.gif")><br>
