@@ -20,11 +20,11 @@ First, what is **procedural generation**?
 
 Initially, it was a task I had received in my computer graphics course. Usually, in these cases, I immerse myself in the Github projects to get inspired by the kind of program structure I will need. However, I did not find anything concrete with the librairies I used.
 
-Users used a lot more GLFW than FreeGlut. The few people who used the same tools as me had programs far too complicated for anything.
+Users used a lot more **GLFW than FreeGlut**. The few people who used the same tools as me had programs far too complicated for anything.
 
 So I decided to start from 0 and create a quick and easy way to randomly generate a city with buildings of different size and with different textures, all using shaders.
 
-I did not complicate my life, I created a single VAO to which I was going to apply transformations to avoid going into an overly complex generation structure.
+I did not complicate my life, I created a single *VAO* to which I was going to apply transformations to avoid going into an overly complex generation structure.
 
 #### Since there might still be some problems in my implementation, so please feel free to give me any advice!
 
