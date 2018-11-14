@@ -13,6 +13,16 @@ Here's an **example** of the camera and the final look of the project.
   <img src="https://user-images.githubusercontent.com/33030290/48488025-d6189200-e7ed-11e8-9821-491b4853257c.gif")><br>
 </p>
 
+## Controls
+
+| Input   |  Description |
+|:----------:|:------:|
+| 'w' | Move forward in the environment |
+| 'a' | Move backward in the environment |
+| 's' | Move left in the environment |
+| 'd' | Move right in the environment |
+| 'r' | Re-generate the building sizes and textures |
+
 ## Summary
 First, what is **procedural generation**?
 
