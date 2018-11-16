@@ -1,4 +1,4 @@
-/*	
+/*
 	Procedural city generator
 	Infography 2018
 	Cégep Lévis-Lauzon
@@ -36,6 +36,7 @@ GLuint textureProgram;
 GLuint skyboxProgram;
 GLuint vaoBase;
 GLuint vaoToit;
+GLuint vaoToit2;
 GLuint vaoSol;
 GLuint vaoNuage[2];
 GLuint vaoHorizon[4];
@@ -71,12 +72,12 @@ glm::vec3 cameraUp = glm::vec3(0.0f, 5.0f, 0.0f);
 float multipleCouleur[4] = { 1.0,1.0,1.0,1.0 };
 bool firstMouse = true;
 bool firstKey = false;
-GLfloat yaw = -90.0f;	
+GLfloat yaw = -90.0f;
 GLfloat pitch = 0.0f;
 GLfloat lastX = 0;
 GLfloat lastY = 0;
 bool boutons[5] = { false,false,false,false,false };
-bool warpsouris=false;
+bool warpsouris = false;
 int nbBuildings = 40;
 bool hasStarted = false;
 // Scaling front
@@ -90,8 +91,7 @@ std::vector<float> _y2;
 std::vector<float> _z2;
 std::vector<GLuint> _texture2;
 
-void getUniforms(GLuint *program)
-{
+void getUniforms(GLuint *program) {
 	glUseProgram(*program);
 	gProjection = glGetUniformLocation(*program, "gProjection");
 	assert(gProjection != 0xFFFFFFFF);
@@ -102,37 +102,36 @@ void getUniforms(GLuint *program)
 
 GLuint getRandomTexture(int random) {
 	switch (random) {
-		case 0:
-			return texMaison;
-		case 1:
-			return texBuilding1;
-		case 2:
-			return texBuilding2;
-		case 3:
-			return texBuilding3;
-		case 4:
-			return texBuilding4;
-		case 5:
-			return texBuilding5;
-		case 6:
-			return texBuilding6;
-		case 7:
-			return texBuilding7;
-		case 8:
-			return texBuilding8;
-		case 9:
-			return texBuilding9;
-		case 10:
-			return texBuilding10;
-		case 12:
-			return texBuilding11;
-		default:
-			return 0;
+	case 0:
+		return texMaison;
+	case 1:
+		return texBuilding1;
+	case 2:
+		return texBuilding2;
+	case 3:
+		return texBuilding3;
+	case 4:
+		return texBuilding4;
+	case 5:
+		return texBuilding5;
+	case 6:
+		return texBuilding6;
+	case 7:
+		return texBuilding7;
+	case 8:
+		return texBuilding8;
+	case 9:
+		return texBuilding9;
+	case 10:
+		return texBuilding10;
+	case 12:
+		return texBuilding11;
+	default:
+		return 0;
 	}
 }
 
-void Limites()
-{
+void Limites() {
 	if (cameraPos.z <= -200.0)
 	{
 		cameraPos.z = -200.0;
@@ -151,8 +150,7 @@ void Limites()
 	}
 }
 
-void deplacement()
-{
+void deplacement() {
 	GLfloat cameraSpeed = 0.8f;
 	glm::vec3 camDevant;
 	camDevant.x = cameraFront.x;
@@ -180,24 +178,30 @@ void deplacement()
 	Limites();
 }
 
-void drawBuilding()
-{	
+void drawBuilding(bool top) {
 	House_Maker maMaison;
 
 	glBindVertexArray(vaoBase);
 	maMaison.creeBase(10, 50, 5.0f, glm::vec3(rand() % 2, rand() % 2, rand() % 2));
 	glBindVertexArray(0);
 
-	glBindVertexArray(vaoToit);
-	maMaison.creeToit(0.0f, 0.0f, 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-	glBindVertexArray(0);
+	if (!top) {
+		glBindVertexArray(vaoToit);
+		maMaison.creeToit(0.0f, 0.0f, 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+		glBindVertexArray(0);
+	}
+	else {
+		glBindVertexArray(vaoToit);
+		maMaison.creeToit(10.0f, 90.0f, 5.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+		glBindVertexArray(0);
+	}
 
 	glBindVertexArray(vaoSol);
 	maMaison.creeSurface(500.0, -1.01, 500.0, 100.0, true, false);
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoNuage[0]);
-	maMaison.creeSurface(600.0,350.0,700.0, 1.0, true, false);
+	maMaison.creeSurface(600.0, 350.0, 700.0, 1.0, true, false);
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoNuage[1]);
@@ -205,7 +209,7 @@ void drawBuilding()
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoHorizon[0]);
-	maMaison.creeSurface(500.0,500.0,-500.0,3.0, false, false);
+	maMaison.creeSurface(500.0, 500.0, -500.0, 3.0, false, false);
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoHorizon[1]);
@@ -255,13 +259,12 @@ void InitRandomValues() {
 }
 
 
-void renduMaison()
-{
+void renduMaison() {
 	float randY = 1.0;
+	bool hasTop = false;
 	InitRandomValues();
-	glm::mat4 modele=glm::mat4(1.0);
+	glm::mat4 modele = glm::mat4(1.0);
 
-	// Behind the original building
 	for (int y = 1; y < nbBuildings / (nbBuildings / 10); y++) {
 		for (int x = 1; x < nbBuildings / (nbBuildings / 10); x++) {
 			glUniformMatrix4fv(glGetUniformLocation(textureProgram, "gModele"), 1, GL_FALSE, &modele[0][0]);
@@ -270,12 +273,22 @@ void renduMaison()
 			glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
 			glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
+			// Target the only building that will have a top
+			if (x == 5 && y == 5) {
+				hasTop = true;
+				drawBuilding(true);
+			}
 
 			glBindVertexArray(vaoToit);
 			glBindTexture(GL_TEXTURE_2D, texToit);
 			glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
 			glDrawElements(GL_TRIANGLES, 6 * 3, GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
+			// Added top for a single building. (For the assignment)
+			if (hasTop) {
+				drawBuilding(false);
+				hasTop = false;
+			}
 
 			modele = glm::mat4(1.0f);
 			randY *= -1;
@@ -284,7 +297,6 @@ void renduMaison()
 		}
 		randY *= -1;
 	}
-	// In front of the original building
 	for (int y = 1; y < nbBuildings / (nbBuildings / 10); y++) {
 		for (int x = 1; x < nbBuildings / (nbBuildings / 10); x++) {
 			glUniformMatrix4fv(glGetUniformLocation(textureProgram, "gModele"), 1, GL_FALSE, &modele[0][0]);
@@ -309,8 +321,7 @@ void renduMaison()
 	}
 }
 
-void drawSkybox()
-{
+void drawSkybox() {
 	// skybox cube
 	glActiveTexture(GL_TEXTURE0);
 	glUniform1i(glGetUniformLocation(skyboxProgram, "Skybox"), 0);
@@ -319,25 +330,23 @@ void drawSkybox()
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 }
-
 //Fonction de rappel du rendu graphique
-void renduScene()
-{
+void renduScene() {
 	glm::mat4 view;
 	glm::mat4 projection;
 	glm::mat4 modele;
 	deplacement();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	projection = glm::perspective(glm::radians(45.0f), glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT)*1.0f, 0.1f, 800.0f);
-	
+
 	getUniforms(&skyboxProgram);
 	view = glm::mat4(glm::mat3(glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp)));
 	glUniformMatrix4fv(gProjection, 1, GL_FALSE, &projection[0][0]);
 	glUniformMatrix4fv(gVue, 1, GL_FALSE, &view[0][0]);
 	drawSkybox();
-	
+
 	view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 
 	gModele = glGetUniformLocation(textureProgram, "gModele");
@@ -360,7 +369,6 @@ void renduScene()
 	glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
-
 	for (int i = 0; i < 2; i++) {
 		glBindVertexArray(vaoNuage[i]);
 		glBindTexture(GL_TEXTURE_2D, texNuage);
@@ -380,12 +388,11 @@ void renduScene()
 	glUniform1i(glGetUniformLocation(textureProgram, "ourTexture1"), 0);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
-	
+
 	glutSwapBuffers();
 }
 
-void clavier(unsigned char bouton, int x, int y)
-{
+void clavier(unsigned char bouton, int x, int y) {
 	switch (bouton)
 	{
 	case 'a':
@@ -409,8 +416,7 @@ void clavier(unsigned char bouton, int x, int y)
 	}
 }
 
-void releaseClavier(unsigned char bouton, int x, int y)
-{
+void releaseClavier(unsigned char bouton, int x, int y) {
 	switch (bouton)
 	{
 	case 'a':
@@ -431,9 +437,7 @@ void releaseClavier(unsigned char bouton, int x, int y)
 	}
 }
 
-void souris(int x, int y)
-{
-
+void souris(int x, int y) {
 	if (warpsouris) {
 		warpsouris = false;
 		lastX = x;
@@ -474,8 +478,7 @@ void souris(int x, int y)
 
 /*****************************************/
 //Fonction d'initialisation des textures
-void initTextures()
-{
+void initTextures() {
 	Texture_Loader textureLoader;
 	texMaison = textureLoader.CreateTexture2D("textures/woodenhouse.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
 	texSol = textureLoader.CreateTexture2D("textures/grass.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR, GL_LINEAR, GL_RGB);
@@ -491,7 +494,7 @@ void initTextures()
 	texBuilding9 = textureLoader.CreateTexture2D("textures/building9.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
 	texBuilding10 = textureLoader.CreateTexture2D("textures/building10.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
 	texBuilding11 = textureLoader.CreateTexture2D("textures/building11.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
-	
+
 	texNuage = textureLoader.CreateTexture2D("textures/cloud.png", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
 	texHorizon = textureLoader.CreateTexture2D("textures/city.png", GL_MIRRORED_REPEAT, GL_CLAMP_TO_EDGE, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
 	texGrass = textureLoader.CreateTexture2D("textures/grass.png", GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
@@ -505,10 +508,8 @@ void initTextures()
 	faces.push_back("textures/front.jpg");
 	texSkybox = textureLoader.CreateSkyboxTexture(faces);
 }
-/*****************************************/
 //Fonction d'initialisation des shaders
-void initShaders()
-{
+void initShaders() {
 	Core::Shader_Loader shaderLoader;
 	textureProgram = shaderLoader.CreateProgram("vertexShader.glsl", "fragmentShader.glsl");
 	skyboxProgram = shaderLoader.CreateProgram("vertSkybox.glsl", "fragSkybox.glsl");
@@ -521,11 +522,10 @@ void initShaders()
 	glGenVertexArrays(1, &vaoGrass);
 	glGenVertexArrays(1, &vaoSkybox);
 }
-void passeTemps(int temps)
-{
+void passeTemps(int temps) {
 	multipleCouleur[temps] -= 0.5;
 	temps++;
-	if(temps == 4)
+	if (temps == 4)
 	{
 		multipleCouleur[0] = 1.0;
 		multipleCouleur[1] = 1.0;
@@ -535,14 +535,12 @@ void passeTemps(int temps)
 	}
 	glutTimerFunc(5000, passeTemps, temps);
 }
-void fermeture()
-{
+void fermeture() {
 	glutLeaveMainLoop();
 }
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH );
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
 	glutCreateWindow("Travail Pratique 3 par William Garneau");
 	glutFullScreen();
@@ -565,7 +563,7 @@ int main(int argc, char **argv)
 	glutSetCursor(GLUT_CURSOR_NONE);
 	/***Initialisation de la maison****/
 	initTextures();
-	drawBuilding();
+	drawBuilding(false);
 	/**********************************/
 	glutMainLoop();
 	/***************/

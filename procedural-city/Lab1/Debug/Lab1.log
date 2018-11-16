@@ -1,23 +1,26 @@
-﻿  main.cpp
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(196): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(225): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(239): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(243): warning C4244: 'argument' : conversion de 'float' en 'const _Ty', perte possible de données
-          with
-          [
-              _Ty=GLuint
-          ]
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(247): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(251): warning C4244: 'argument' : conversion de 'float' en 'const _Ty', perte possible de données
-          with
-          [
-              _Ty=GLuint
-          ]
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(439): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(440): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(444): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(445): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(451): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(452): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
-e:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(454): warning C4305: 'initialisation' : troncation de 'double' à 'GLfloat'
-  Lab1.vcxproj -> E:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\Lab2.exe
+﻿  House_Maker.cpp
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\housemaker\house_maker.cpp(147): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\housemaker\house_maker.cpp(148): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\housemaker\house_maker.cpp(149): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+  Shader_Loader.cpp
+  Texture_Loader.cpp
+  main.cpp
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(200): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(229): warning C4305: 'argument' : troncation de 'double' à 'GLfloat'
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(243): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(247): warning C4244: 'argument' : conversion de 'float' en 'const GLuint', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(251): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(255): warning C4244: 'argument' : conversion de 'float' en 'const GLuint', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(443): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(444): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(448): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(449): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(455): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(456): warning C4244: '=' : conversion de 'int' en 'GLfloat', perte possible de données
+k:\session 5\infographie\semaine 10\travail pratique 3\procedural-city\procedural-city\lab1\main.cpp(458): warning C4305: 'initialisation' : troncation de 'double' à 'GLfloat'
+  Génération de code en cours...
+soil.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu être trouvé avec 'soil.lib(image_DXT.obj)' ou sur 'K:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\SOIL.pdb' ; l'objet sera lié sans informations de débogage
+soil.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu être trouvé avec 'soil.lib(image_helper.obj)' ou sur 'K:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\SOIL.pdb' ; l'objet sera lié sans informations de débogage
+soil.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu être trouvé avec 'soil.lib(SOIL.obj)' ou sur 'K:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\SOIL.pdb' ; l'objet sera lié sans informations de débogage
+soil.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu être trouvé avec 'soil.lib(stb_image_aug.obj)' ou sur 'K:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\SOIL.pdb' ; l'objet sera lié sans informations de débogage
+  Lab1.vcxproj -> K:\Session 5\Infographie\Semaine 10\Travail Pratique 3\procedural-city\procedural-city\Debug\Lab2.exe
