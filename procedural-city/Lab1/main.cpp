@@ -78,7 +78,7 @@ GLfloat lastX = 0;
 GLfloat lastY = 0;
 bool boutons[5] = { false,false,false,false,false };
 bool warpsouris = false;
-int nbBuildings = 40;
+int nbBuildings = 60;
 bool hasStarted = false;
 // Scaling front
 std::vector<float> _x;
@@ -496,7 +496,7 @@ void initTextures() {
 	texBuilding11 = textureLoader.CreateTexture2D("textures/building11.jpg", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGB);
 
 	texNuage = textureLoader.CreateTexture2D("textures/cloud.png", GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
-	texHorizon = textureLoader.CreateTexture2D("textures/city.png", GL_MIRRORED_REPEAT, GL_CLAMP_TO_EDGE, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
+	texHorizon = textureLoader.CreateTexture2D("textures/city2.png", GL_MIRRORED_REPEAT, GL_CLAMP_TO_EDGE, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
 	texGrass = textureLoader.CreateTexture2D("textures/grass.png", GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_RGBA);
 
 	std::vector<char*> faces;
