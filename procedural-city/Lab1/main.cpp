@@ -126,28 +126,22 @@ GLuint getRandomTexture(int random) {
 }
 
 void Limites() {
-	if (cameraPos.z <= -200.0)
-	{
+	if (cameraPos.z <= -200.0) {
 		cameraPos.z = -200.0;
 	}
-	if (cameraPos.z >= 200.0)
-	{
+	if (cameraPos.z >= 200.0) {
 		cameraPos.z = 200.0;
 	}
-	if (cameraPos.x <= -200.0)
-	{
+	if (cameraPos.x <= -200.0) {
 		cameraPos.x = -200.0;
 	}
-	if (cameraPos.x >= 200.0)
-	{
+	if (cameraPos.x >= 200.0) {
 		cameraPos.x = 200.0;
 	}
-	if (cameraPos.y >= 145.0f)
-	{
+	if (cameraPos.y >= 145.0f) {
 		cameraPos.y = 145.0f;
 	}
-	if (cameraPos.y <= 0.5f)
-	{
+	if (cameraPos.y <= 0.5f) {
 		cameraPos.y = 0.5f;
 	}
 }
