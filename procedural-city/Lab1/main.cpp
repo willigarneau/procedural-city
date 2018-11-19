@@ -69,9 +69,9 @@ GLfloat yaw = -90.0f;
 GLfloat pitch = 0.0f;
 GLfloat lastX = 0;
 GLfloat lastY = 0;
-bool boutons[5] = { false,false,false,false,false };
+bool boutons[7] = { false,false,false,false,false,false,false };
 bool warpsouris = false;
-int nbBuildings = 60;
+int nbBuildings = 40;
 bool hasStarted = false;
 float _fpv = 45.0f;
 // Scaling front
@@ -142,6 +142,14 @@ void Limites() {
 	{
 		cameraPos.x = 200.0;
 	}
+	if (cameraPos.y >= 145.0f)
+	{
+		cameraPos.y = 145.0f;
+	}
+	if (cameraPos.y <= 0.5f)
+	{
+		cameraPos.y = 0.5f;
+	}
 }
 
 void deplacement() {
@@ -168,6 +176,12 @@ void deplacement() {
 		_z.clear(); _z2.clear();
 		_texture.clear(); _texture2.clear();
 		hasStarted = false;
+	}
+	if (boutons[5] == true) {
+		cameraPos.y += 2.0f;
+	}
+	if (boutons[6] == true) {
+		cameraPos.y -= 2.0f;
 	}
 	Limites();
 }
@@ -259,8 +273,8 @@ void renduMaison() {
 	InitRandomValues();
 	glm::mat4 modele = glm::mat4(1.0);
 
-	for (int y = 1; y < nbBuildings / (nbBuildings / 10); y++) {
-		for (int x = 1; x < nbBuildings / (nbBuildings / 10); x++) {
+	for (int y = 1; y < nbBuildings / (nbBuildings / 15); y++) {
+		for (int x = 1; x < nbBuildings / (nbBuildings / 15); x++) {
 			glUniformMatrix4fv(glGetUniformLocation(textureProgram, "gModele"), 1, GL_FALSE, &modele[0][0]);
 			glBindVertexArray(vaoBase);
 			glBindTexture(GL_TEXTURE_2D, getRandomTexture(_texture[x * y]));
@@ -291,8 +305,8 @@ void renduMaison() {
 		}
 		randY *= -1;
 	}
-	for (int y = 1; y < nbBuildings / (nbBuildings / 10); y++) {
-		for (int x = 1; x < nbBuildings / (nbBuildings / 10); x++) {
+	for (int y = 1; y < nbBuildings / (nbBuildings / 15); y++) {
+		for (int x = 1; x < nbBuildings / (nbBuildings / 15); x++) {
 			glUniformMatrix4fv(glGetUniformLocation(textureProgram, "gModele"), 1, GL_FALSE, &modele[0][0]);
 			glBindVertexArray(vaoBase);
 			glBindTexture(GL_TEXTURE_2D, getRandomTexture(_texture2[x * y]));
@@ -404,6 +418,12 @@ void clavier(unsigned char bouton, int x, int y) {
 	case 'r':
 		boutons[4] = true;
 		break;
+	case 'o':
+		boutons[5] = true;
+		break;
+	case 'p':
+		boutons[6] = true;
+		break;
 	case 27:
 		glutLeaveMainLoop();
 		break;
@@ -427,6 +447,12 @@ void releaseClavier(unsigned char bouton, int x, int y) {
 		break;
 	case 'r':
 		boutons[4] = false;
+		break;
+	case 'o':
+		boutons[5] = false;
+		break;
+	case 'p':
+		boutons[6] = false;
 		break;
 	}
 }
