@@ -71,7 +71,7 @@ GLfloat lastX = 0;
 GLfloat lastY = 0;
 bool boutons[7] = { false,false,false,false,false,false,false };
 bool warpsouris = false;
-int nbBuildings = 40;
+int nbBuildings = 20;
 bool hasStarted = false;
 float _fpv = 45.0f;
 // Scaling front
