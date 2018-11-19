@@ -24,6 +24,7 @@ Here's an **example** of the camera and the rendering with OpenGL.
 | 's' | Move left in the environment |
 | 'd' | Move right in the environment |
 | Mouse Move | Look around you with Euler Angles |
+| Mouse Wheel | Zoom in/Zoom out |
 | 'r' | Re-generate the building sizes and textures |
 | 'o' | Move up in the environment |
 | 'p' | Move down in the environment |
