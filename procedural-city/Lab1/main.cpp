@@ -14,7 +14,6 @@
 */
 
 #include <iostream>
-
 /******APIs*****/
 #include "Dependencies\glm\glm\glm.hpp"
 #include "Dependencies\glm\glm\gtc\matrix_transform.hpp"
@@ -23,14 +22,10 @@
 #include "ShaderLoader\Shader_Loader.h"
 #include "HouseMaker\House_Maker.h"
 #include "TextureLoader\Texture_Loader.h"
-
-
 /**********namespaces**************/
 using namespace Core;
 using namespace House;
 using namespace texCore;
-
-
 /****Handlers globaux*****/
 GLuint textureProgram;
 GLuint skyboxProgram;
@@ -63,12 +58,10 @@ GLuint texNuage;
 GLuint texHorizon;
 GLuint texGrass;
 GLuint texSkybox;
-
 /******variables globales*******/
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.5f, 7.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.25f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 5.0f, 0.0f);
-
 float multipleCouleur[4] = { 1.0,1.0,1.0,1.0 };
 bool firstMouse = true;
 bool firstKey = false;
@@ -80,6 +73,7 @@ bool boutons[5] = { false,false,false,false,false };
 bool warpsouris = false;
 int nbBuildings = 60;
 bool hasStarted = false;
+float _fpv = 45.0f;
 // Scaling front
 std::vector<float> _x;
 std::vector<float> _y;
@@ -339,7 +333,7 @@ void renduScene() {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	projection = glm::perspective(glm::radians(45.0f), glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT)*1.0f, 0.1f, 800.0f);
+	projection = glm::perspective(glm::radians(_fpv), glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT)*1.0f, 0.1f, 800.0f);
 
 	getUniforms(&skyboxProgram);
 	view = glm::mat4(glm::mat3(glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp)));
@@ -522,21 +516,16 @@ void initShaders() {
 	glGenVertexArrays(1, &vaoGrass);
 	glGenVertexArrays(1, &vaoSkybox);
 }
-void passeTemps(int temps) {
-	multipleCouleur[temps] -= 0.5;
-	temps++;
-	if (temps == 4)
-	{
-		multipleCouleur[0] = 1.0;
-		multipleCouleur[1] = 1.0;
-		multipleCouleur[2] = 1.0;
-		multipleCouleur[3] = 1.0;
-		temps = 0;
-	}
-	glutTimerFunc(5000, passeTemps, temps);
-}
 void fermeture() {
 	glutLeaveMainLoop();
+}
+void roulette(int button, int action, int x, int y) {
+	if (action == 1) {
+		_fpv -= 1.5;
+	} else {
+		_fpv += 1.5;
+	}
+	glutPostRedisplay();
 }
 int main(int argc, char **argv) {
 	glutInit(&argc, argv);
@@ -553,6 +542,7 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(clavier);
 	glutPassiveMotionFunc(souris);
 	glutKeyboardUpFunc(releaseClavier);
+	glutMouseWheelFunc(roulette);
 	glutIdleFunc(renduScene);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
