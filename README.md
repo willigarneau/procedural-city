@@ -103,8 +103,19 @@ helpful for you to spot the difference to yours.
 
 <b>OS</b>
 
-```c++
+```text
 Windows 10 2018
+```
+
+<b>Configuration</b>
+
+```text
+CPU -> Intel Core i7 3960X
+RAM -> 16Gb DDR3 1600Hz
+GPU -> NVIDIA GEFORCE 1080 Founder's edition
+STORAGE -> 1To SSD
+POWER SUPPLY -> 750W GOLD
+MOTHERBOARD -> Aurora R4 ALX System Motherboard 7JNH0 07JNH0
 ```
 
 <b>OpenGL</b>
