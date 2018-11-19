@@ -209,19 +209,19 @@ void drawBuilding(bool top) {
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoHorizon[0]);
-	maMaison.creeSurface(500.0, 500.0, -500.0, 3.0, false, false);
+	maMaison.creeSurface(500.0, 400.0, -500.0, 3.0, false, false);
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoHorizon[1]);
-	maMaison.creeSurface(500.0, 500.0, 500.0, 3.0, false, false);
+	maMaison.creeSurface(500.0, 400.0, 500.0, 3.0, false, false);
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoHorizon[2]);
-	maMaison.creeSurface(500.0, 500.0, 500.0, 3.0, false, true);
+	maMaison.creeSurface(500.0, 400.0, 500.0, 3.0, false, true);
 	glBindVertexArray(0);
 
 	glBindVertexArray(vaoHorizon[3]);
-	maMaison.creeSurface(-500.0, 500.0, 500.0, 3.0, false, true);
+	maMaison.creeSurface(-500.0, 400.0, 500.0, 3.0, false, true);
 	glBindVertexArray(0);
 
 
