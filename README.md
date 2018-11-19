@@ -71,7 +71,7 @@ I did not complicate my life, I created a single *VAO* to which I was going to a
 
 So here is the result of what I made. I hope you will have fun with it!
 
-**Note :** There is some code in the project to create a merge frame from 2 images. We are using a camera at school which can't take the whole path. For more informations about the camera, visit https://www.axis.com/fr-ca.
+**Note :** You can choose the amount of buildings to generate just by changing the **nbBuildings** property.
 
 ---
 
